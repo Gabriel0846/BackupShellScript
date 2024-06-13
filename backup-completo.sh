@@ -26,7 +26,10 @@ fi
 # Inicio do backup.
 ###################
 if tar -czSpf "$external_storage/$final_archive" "$backup_path" >> $log_file
-    printf "[date_format] Backup realizado.\n" >> $log_file
+    printf "[$date_format] Backup realizado.\n" >> $log_file
 else 
     printf "[$date_format] Backup ERRO.\n" >> $log_file
 fi
+
+# uxcluir backup antigos
+find $external_storage -mtime +30
